@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 
 import { UsersService } from '../../shared/services/users.service';
 import { AuthService } from './../../shared/services/auth.service';
@@ -20,18 +20,27 @@ export class LoginComponent implements OnInit {
   constructor(
     private usersService: UsersService,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
     this.message = new Message('danger', '');
+    
+    this.route.queryParams
+      .subscribe((params: Params) => {
+        if (params['nowCanLogin']) {          
+          this.showMessage('Теперь вы можете зайти в систему', 'success');
+        }
+      });   
+    
     this.form = new FormGroup({
       'email': new FormControl(null, [Validators.required, Validators.email]),
       'password': new FormControl(null, [Validators.required, Validators.minLength(6)])
     });
   }
 
-  private showMessage(text: string, type: string = 'danger') {
+  private showMessage(text: string, type: string = 'danger') {    
     this.message = new Message(type, text);
     setTimeout(() => {
       this.message.text = '';
