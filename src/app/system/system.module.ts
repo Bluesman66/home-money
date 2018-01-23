@@ -8,6 +8,7 @@ import { BillPageComponent } from './bill-page/bill-page.component';
 import { HistoryPageComponent } from './history-page/history-page.component';
 import { PlanningPageComponent } from './planning-page/planning-page.component';
 import { RecordsPageComponent } from './records-page/records-page.component';
+import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
 
 @NgModule({
     declarations: [
@@ -15,7 +16,8 @@ import { RecordsPageComponent } from './records-page/records-page.component';
         BillPageComponent,
         HistoryPageComponent,
         PlanningPageComponent,
-        RecordsPageComponent
+        RecordsPageComponent,
+        SidebarComponent
     ],
     imports: [
         CommonModule,        
