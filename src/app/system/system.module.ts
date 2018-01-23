@@ -18,7 +18,7 @@ import { RecordsPageComponent } from './records-page/records-page.component';
         RecordsPageComponent
     ],
     imports: [
-        CommonModule,
+        CommonModule,        
         SharedModule,
         SystemRoutingModule
     ]

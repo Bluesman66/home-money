@@ -1,14 +1,17 @@
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
     imports: [
         ReactiveFormsModule, 
-        FormsModule
+        FormsModule,
+        RouterModule
     ],
     exports: [
         ReactiveFormsModule, 
-        FormsModule
+        FormsModule,
+        RouterModule
     ]
 })
 export class SharedModule {
