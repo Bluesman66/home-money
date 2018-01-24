@@ -1,10 +1,10 @@
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
+import { componentDestroyed } from "ng2-rx-componentdestroyed";
 
 import { UsersService } from '../../shared/services/users.service';
 import { User } from '../../shared/models/user.model';
-import { componentDestroyed } from "ng2-rx-componentdestroyed";
 
 @Component({
   selector: 'pai-registration',

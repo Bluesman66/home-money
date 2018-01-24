@@ -11,7 +11,7 @@
       <pai-add-event></pai-add-event>
     </div>
     <div class="col-md-6">
-      <pai-add-category></pai-add-category>
+      <pai-add-category (onCategoryAdd)="newCategoryAdded($event)"></pai-add-category>
     </div>
   </div>
   <div class="row">

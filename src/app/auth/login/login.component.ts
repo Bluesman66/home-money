@@ -1,12 +1,12 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router, ActivatedRoute, Params } from '@angular/router';
+import { componentDestroyed } from "ng2-rx-componentdestroyed";
 
 import { UsersService } from '../../shared/services/users.service';
 import { AuthService } from './../../shared/services/auth.service';
 import { User } from './../../shared/models/user.model';
 import { Message } from './../../shared/models/message.model';
-import { componentDestroyed } from "ng2-rx-componentdestroyed";
 
 @Component({
   selector: 'pai-login',

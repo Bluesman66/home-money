@@ -1,10 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
+import { componentDestroyed } from "ng2-rx-componentdestroyed";
 
 import { BillService } from './../shared/services/bill.service';
 import { Bill } from './../shared/models/bill.model';
-import { componentDestroyed } from "ng2-rx-componentdestroyed";
 
 @Component({
   selector: 'pai-bill-page',
