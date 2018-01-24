@@ -13,16 +13,33 @@ import { componentDestroyed } from "ng2-rx-componentdestroyed";
 })
 export class BillPageComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void { }
-  
+
+  bill: Bill;
+  currency: any;
+  isLoaded: boolean;
+
   constructor(private billService: BillService) { }
 
   ngOnInit() {
+    this.isLoaded = false;
     Observable.combineLatest(
       this.billService.getBill(),
       this.billService.getCurrency()
-    ).takeUntil(componentDestroyed(this))
-    .subscribe((data: [Bill, any]) => {
-      console.log(data);
-    })
+    ).takeUntil(componentDestroyed(this))      
+      .subscribe((data: [Bill, any]) => {
+        this.bill = data[0];
+        this.currency = data[1];
+        this.isLoaded = true;
+      })
+  }
+
+  onRefresh() {
+    this.isLoaded = false;
+    this.billService.getCurrency()
+      .takeUntil(componentDestroyed(this))      
+      .subscribe((currency: any) => {
+        this.currency = currency;
+        this.isLoaded = true;
+      });
   }
 }

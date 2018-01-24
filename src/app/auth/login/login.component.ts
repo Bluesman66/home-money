@@ -55,8 +55,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
     this.usersService.getUserByEmail(formData.email)
       .takeUntil(componentDestroyed(this))
-      .subscribe((user: User) => {
-        debugger;
+      .subscribe((user: User) => {        
         if (user) {
           if (user.password === formData.password) {
             this.message.text = '';

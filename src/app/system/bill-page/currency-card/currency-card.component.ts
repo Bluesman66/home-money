@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'pai-currency-card',
@@ -6,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./currency-card.component.scss']
 })
 export class CurrencyCardComponent implements OnInit {
+
+  @Input() currency: any;
+  currencies: string[] = ['EUR', 'USD'];
 
   constructor() { }
 
