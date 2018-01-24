@@ -1,16 +1,18 @@
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { UsersService } from '../../shared/services/users.service';
 import { User } from '../../shared/models/user.model';
+import { componentDestroyed } from "ng2-rx-componentdestroyed";
 
 @Component({
   selector: 'pai-registration',
   templateUrl: './registration.component.html',
   styleUrls: ['./registration.component.scss']
 })
-export class RegistrationComponent implements OnInit {
+export class RegistrationComponent implements OnInit, OnDestroy {
+  ngOnDestroy(): void { }
 
   form: FormGroup;
 
@@ -33,6 +35,7 @@ export class RegistrationComponent implements OnInit {
     const user = new User(email, password, name);
 
     this.usersService.createNewUser(user)
+      .takeUntil(componentDestroyed(this))
       .subscribe(() => {
         this.router.navigate(['/login'], {
           queryParams: {
@@ -42,12 +45,13 @@ export class RegistrationComponent implements OnInit {
       })
   }
 
-  forbiddenEmails(control: FormControl): Promise<any> {    
+  forbiddenEmails(control: FormControl): Promise<any> {
     return new Promise((resolve, reject) => {
       this.usersService.getUserByEmail(control.value)
+        .takeUntil(componentDestroyed(this))
         .subscribe((user: User) => {
           if (user) {
-            resolve({forbiddenEmail: true});
+            resolve({ forbiddenEmail: true });
           } else {
             resolve(null);
           }

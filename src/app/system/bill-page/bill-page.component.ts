@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs/Subscription';
 
 import { BillService } from './../shared/services/bill.service';
 import { Bill } from './../shared/models/bill.model';
+import { componentDestroyed } from "ng2-rx-componentdestroyed";
 
 @Component({
   selector: 'pai-bill-page',
@@ -11,22 +12,17 @@ import { Bill } from './../shared/models/bill.model';
   styleUrls: ['./bill-page.component.scss']
 })
 export class BillPageComponent implements OnInit, OnDestroy {
+  ngOnDestroy(): void { }
   
-  subscription: Subscription;
-
   constructor(private billService: BillService) { }
 
   ngOnInit() {
-    this.subscription = Observable.combineLatest(
+    Observable.combineLatest(
       this.billService.getBill(),
       this.billService.getCurrency()
-    ).subscribe((data: [Bill, any]) => {
+    ).takeUntil(componentDestroyed(this))
+    .subscribe((data: [Bill, any]) => {
       console.log(data);
     })
   }
-
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
-  }
-
 }
