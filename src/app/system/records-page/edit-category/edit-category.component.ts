@@ -5,7 +5,6 @@ import { Category } from './../../shared/models/category.model';
 import { CategoriesService } from './../../shared/services/categories.service';
 import { componentDestroyed } from "ng2-rx-componentdestroyed";
 import { Message } from './../../../shared/models/message.model';
-import { setTimeout } from 'timers';
 
 @Component({
   selector: 'pai-edit-category',

@@ -45,9 +45,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   private showMessage(text: string, type: string = 'danger') {
     this.message = new Message(type, text);
-    setTimeout(() => {
-      this.message.text = '';
-    }, 5000);
+    setTimeout(() => this.message.text = '', 5000);
   }
 
   onSubmit() {
