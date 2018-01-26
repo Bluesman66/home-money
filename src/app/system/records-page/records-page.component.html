@@ -12,7 +12,7 @@ Loading...
 <section class="section" *ngIf="isLoaded">
   <div class="row">
     <div class="col-md-6">
-      <pai-add-event></pai-add-event>
+      <pai-add-event [categories]="categories"></pai-add-event>
     </div>
     <div class="col-md-6">
       <pai-add-category (onCategoryAdd)="newCategoryAdded($event)"></pai-add-category>
