@@ -4,6 +4,11 @@
     <span class="sparkline bar"></span>
   </h3>
 </div>
-<pai-history-chart></pai-history-chart>
-<pai-history-events></pai-history-events>
-<pai-history-filter></pai-history-filter>
+<div *ngIf="!isLoaded" class="text-center">
+  Loading...
+</div>
+<div *ngIf="isLoaded">
+  <pai-history-chart [data]="chartData"></pai-history-chart>
+  <pai-history-events></pai-history-events>
+  <pai-history-filter></pai-history-filter>
+</div>

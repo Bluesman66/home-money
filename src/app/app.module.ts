@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AuthModule } from './auth/auth.module';
 import { AppRoutingModule } from './app-routing.module';
@@ -15,6 +16,7 @@ import { SystemModule } from './system/system.module';
   ],
   imports: [
     BrowserModule,    
+    BrowserAnimationsModule,
     HttpModule,
     AuthModule,
     AppRoutingModule,
