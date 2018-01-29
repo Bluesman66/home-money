@@ -12,6 +12,10 @@ export class HistoryEventsComponent implements OnInit {
 
   @Input() categories: Category[] = [];
   @Input() events: HMEvent[] = [];
+  
+  searchValue: string = '';
+  searchPlaceHolder: string = 'Сумма';
+  searchField:string = 'amount';
 
   constructor() { }
 
@@ -26,6 +30,17 @@ export class HistoryEventsComponent implements OnInit {
       'label': true,
       'label-danger': event.type === 'outcome',
       'label-success': event.type === 'income' 
-    }
+    };
+  }
+
+  changeCriteria(field: string){
+    const namesMap = {
+      amount: 'Сумма',
+      date: 'Дата',
+      category: 'Категория',
+      type: 'Тип'
+    };
+    this.searchPlaceHolder = namesMap[field];
+    this.searchField = field;
   }
 }
