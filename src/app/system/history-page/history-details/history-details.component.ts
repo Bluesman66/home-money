@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { componentDestroyed } from "ng2-rx-componentdestroyed";
+import { componentDestroyed } from 'ng2-rx-componentdestroyed';
 
 import { EventsService } from './../../shared/services/events.service';
 import { CategoriesService } from './../../shared/services/categories.service';
@@ -13,18 +13,19 @@ import { Category } from '../../shared/models/category.model';
   styleUrls: ['./history-details.component.scss']
 })
 export class HistoryDetailsComponent implements OnInit, OnDestroy {
-  ngOnDestroy(): void { }
 
   event: HMEvent;
   category: Category;
 
-  isLoaded: boolean = false;
+  isLoaded = false;
 
   constructor(
     private route: ActivatedRoute,
     private eventsService: EventsService,
     private categoriesService: CategoriesService
   ) { }
+
+  ngOnDestroy(): void { }
 
   ngOnInit() {
     this.isLoaded = false;

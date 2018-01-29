@@ -15,12 +15,12 @@ Loading...
       <pai-add-event [categories]="categories"></pai-add-event>
     </div>
     <div class="col-md-6">
-      <pai-add-category (onCategoryAdd)="newCategoryAdded($event)"></pai-add-category>
+      <pai-add-category (CategoryAdd)="onNewCategoryAdded($event)"></pai-add-category>
     </div>
   </div>
   <div class="row">
     <div class="col-md-6">
-      <pai-edit-category [categories]="categories" (onCategoryEdit)="categoryWasEdited($event)"></pai-edit-category>
+      <pai-edit-category [categories]="categories" (CategoryEdit)="onCategoryWasEdited($event)"></pai-edit-category>
     </div>
   </div>
 </section>

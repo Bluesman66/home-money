@@ -49,7 +49,7 @@ import { FilterPipe } from './shared/pipes/filter.pipe';
         FilterPipe
     ],
     imports: [
-        CommonModule,        
+        CommonModule,
         SharedModule,
         SystemRoutingModule
     ],

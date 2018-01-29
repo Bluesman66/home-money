@@ -15,7 +15,7 @@ import { SystemModule } from './system/system.module';
     AppComponent
   ],
   imports: [
-    BrowserModule,    
+    BrowserModule,
     BrowserAnimationsModule,
     HttpModule,
     AuthModule,

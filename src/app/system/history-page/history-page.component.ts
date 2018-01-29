@@ -73,5 +73,4 @@ export class HistoryPageComponent implements OnInit, OnDestroy {
   onFilterCancel() {
     this.toggleFilterVisibility(false);
   }
-
 }

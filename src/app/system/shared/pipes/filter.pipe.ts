@@ -15,12 +15,11 @@ export class FilterPipe implements PipeTransform {
                 t[field] += '';
             }
             if (field === 'type') {
-                t[field] = t[field] === 'income' ? 'доход' : 'расход'; 
-            }
-            else if (field === 'category') {
+                t[field] = t[field] === 'income' ? 'доход' : 'расход';
+            } else if (field === 'category') {
                 t[field] = t['catName'];
             }
-            return t[field].toLowerCase().indexOf(value.toLowerCase()) != -1;
+            return t[field].toLowerCase().indexOf(value.toLowerCase()) !== -1;
         });
     }
 }

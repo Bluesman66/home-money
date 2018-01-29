@@ -8,7 +8,7 @@ import { Category } from './../models/category.model';
 @Injectable()
 export class CategoriesService extends BaseApi {
 
-    constructor(public http: Http){
+    constructor(public http: Http) {
         super(http);
     }
 

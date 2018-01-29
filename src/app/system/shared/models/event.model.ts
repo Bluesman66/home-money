@@ -6,6 +6,6 @@ export class HMEvent {
       public date: string,
       public description: string,
       public id?: number,
-      public catName?: string      
+      public catName?: string
     ) { }
 }

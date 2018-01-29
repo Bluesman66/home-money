@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import { componentDestroyed } from "ng2-rx-componentdestroyed";
+import { componentDestroyed } from 'ng2-rx-componentdestroyed';
 
 import { UsersService } from '../../shared/services/users.service';
 import { AuthService } from './../../shared/services/auth.service';
@@ -14,7 +14,6 @@ import { Message } from './../../shared/models/message.model';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit, OnDestroy {
-  ngOnDestroy(): void { }
 
   form: FormGroup;
   message: Message;
@@ -25,6 +24,8 @@ export class LoginComponent implements OnInit, OnDestroy {
     private router: Router,
     private route: ActivatedRoute
   ) { }
+
+  ngOnDestroy(): void { }
 
   ngOnInit() {
     this.message = new Message('danger', '');
@@ -53,19 +54,17 @@ export class LoginComponent implements OnInit, OnDestroy {
 
     this.usersService.getUserByEmail(formData.email)
       .takeUntil(componentDestroyed(this))
-      .subscribe((user: User) => {        
+      .subscribe((user: User) => {
         if (user) {
           if (user.password === formData.password) {
             this.message.text = '';
             localStorage.setItem('user', JSON.stringify(user))
             this.authService.login();
             this.router.navigate(['/system', 'bill']);
-          }
-          else {
+          } else {
             this.showMessage('Пароль неверный');
           }
-        }
-        else {
+        } else {
           this.showMessage('Такого пользователя не существует');
         }
       });

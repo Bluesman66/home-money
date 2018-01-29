@@ -12,7 +12,5 @@ export class CurrencyCardComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
-  }
-
+  ngOnInit() { }
 }

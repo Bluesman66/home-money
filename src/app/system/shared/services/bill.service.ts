@@ -8,12 +8,12 @@ import { BaseApi } from './../../../shared/core/base-api';
 @Injectable()
 export class BillService extends BaseApi {
 
-    constructor(public http: Http) { 
+    constructor(public http: Http) {
         super(http);
     }
 
     getBill(): Observable<Bill> {
-        return this.get('bill');        
+        return this.get('bill');
     }
 
     updateBill(bill: Bill): Observable<Bill> {

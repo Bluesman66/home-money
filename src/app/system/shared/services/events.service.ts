@@ -6,7 +6,7 @@ import { BaseApi } from './../../../shared/core/base-api';
 import { HMEvent } from './../models/event.model';
 
 @Injectable()
-export class EventsService extends BaseApi {    
+export class EventsService extends BaseApi {
 
     constructor(public http: Http) {
         super(http);
@@ -16,11 +16,11 @@ export class EventsService extends BaseApi {
         return this.post('events', event);
     }
 
-    getEvents(): Observable<HMEvent[]>{
+    getEvents(): Observable<HMEvent[]> {
         return this.get('events');
     }
 
-    getEventById(id: string): Observable<HMEvent>{
+    getEventById(id: string): Observable<HMEvent> {
         return this.get(`events/${id}`);
     }
 }

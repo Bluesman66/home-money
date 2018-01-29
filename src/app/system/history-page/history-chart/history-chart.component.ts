@@ -7,11 +7,9 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class HistoryChartComponent implements OnInit {
 
-  @Input() data;  
+  @Input() data;
 
   constructor() { }
 
-  ngOnInit() {
-  }
-
+  ngOnInit() { }
 }

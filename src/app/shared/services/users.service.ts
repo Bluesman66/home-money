@@ -9,7 +9,7 @@ import { BaseApi } from './../core/base-api';
 export class UsersService extends BaseApi {
 
   constructor(public http: Http) {
-    super(http);    
+    super(http);
   }
 
   getUserByEmail(email: string): Observable<User> {
@@ -18,6 +18,6 @@ export class UsersService extends BaseApi {
   }
 
   createNewUser(user: User): Observable<User> {
-    return this.post('users', user);    
+    return this.post('users', user);
   }
 }

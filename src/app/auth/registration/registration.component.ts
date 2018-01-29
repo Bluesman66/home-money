@@ -1,7 +1,7 @@
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
-import { componentDestroyed } from "ng2-rx-componentdestroyed";
+import { componentDestroyed } from 'ng2-rx-componentdestroyed';
 
 import { UsersService } from '../../shared/services/users.service';
 import { User } from '../../shared/models/user.model';
@@ -12,7 +12,6 @@ import { User } from '../../shared/models/user.model';
   styleUrls: ['./registration.component.scss']
 })
 export class RegistrationComponent implements OnInit, OnDestroy {
-  ngOnDestroy(): void { }
 
   form: FormGroup;
 
@@ -20,6 +19,8 @@ export class RegistrationComponent implements OnInit, OnDestroy {
     private usersService: UsersService,
     private router: Router
   ) { }
+
+  ngOnDestroy(): void { }
 
   ngOnInit() {
     this.form = new FormGroup({
@@ -41,8 +42,8 @@ export class RegistrationComponent implements OnInit, OnDestroy {
           queryParams: {
             nowCanLogin: true
           }
-        })
-      })
+        });
+      });
   }
 
   forbiddenEmails(control: FormControl): Promise<any> {

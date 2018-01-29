@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 
 import { Category } from './../shared/models/category.model';
 import { CategoriesService } from './../shared/services/categories.service';
-import { componentDestroyed } from "ng2-rx-componentdestroyed";
+import { componentDestroyed } from 'ng2-rx-componentdestroyed';
 
 @Component({
   selector: 'pai-records-page',
@@ -10,12 +10,13 @@ import { componentDestroyed } from "ng2-rx-componentdestroyed";
   styleUrls: ['./records-page.component.scss']
 })
 export class RecordsPageComponent implements OnInit, OnDestroy {
-  ngOnDestroy(): void { }
 
   categories: Category[] = [];
-  isLoaded: boolean = false;
+  isLoaded = false;
 
   constructor(private categoriesService: CategoriesService) { }
+
+  ngOnDestroy(): void { }
 
   ngOnInit() {
     this.isLoaded = false;
@@ -24,16 +25,16 @@ export class RecordsPageComponent implements OnInit, OnDestroy {
       .subscribe((categories: Category[]) => {
         this.categories = categories;
         this.isLoaded = true;
-      })
+      });
   }
 
-  newCategoryAdded(category: Category) {
+  onNewCategoryAdded(category: Category) {
     this.categories.push(category);
   }
 
-  categoryWasEdited(category: Category) {
+  onCategoryWasEdited(category: Category) {
     const index = this.categories
       .findIndex(c => c.id === category.id);
-    this.categories[index] = category;  
+    this.categories[index] = category;
   }
 }

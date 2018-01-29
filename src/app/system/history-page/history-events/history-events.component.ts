@@ -12,17 +12,17 @@ export class HistoryEventsComponent implements OnInit {
 
   @Input() categories: Category[] = [];
   @Input() events: HMEvent[] = [];
-  
-  searchValue: string = '';
-  searchPlaceHolder: string = 'Сумма';
-  searchField:string = 'amount';
+
+  searchValue = '';
+  searchPlaceHolder = 'Сумма';
+  searchField = 'amount';
 
   constructor() { }
 
   ngOnInit() {
     this.events.forEach(e => {
       e.catName = this.categories.find(c => c.id === e.category).name;
-    })
+    });
   }
 
   getEventClass(event: HMEvent) {
