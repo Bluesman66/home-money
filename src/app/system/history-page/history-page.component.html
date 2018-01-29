@@ -3,12 +3,22 @@
     Страница истории
     <span class="sparkline bar"></span>
   </h3>
+  <div class="pull-right">
+    <button class="btn-sm btn btn-primary-outline" (click)="onOpenFilter()">
+      <i class="fa fa-filter"></i>
+    </button>
+  </div>
 </div>
 <div *ngIf="!isLoaded" class="text-center">
   Loading...
 </div>
 <div *ngIf="isLoaded">
-  <pai-history-chart [data]="chartData"></pai-history-chart>
-  <pai-history-events [categories]="categories" [events]="events"></pai-history-events>
-  <pai-history-filter></pai-history-filter>
+  <pai-history-chart [data]="chartData">
+  </pai-history-chart>
+  <pai-history-events [categories]="categories" [events]="events">
+  </pai-history-events>
+  <div *ngIf="isFilterVisible">
+    <pai-history-filter (FilterApply)="onFilterApply($event)" (FilterCancel)="onFilterCancel()" [categories]="categories">
+    </pai-history-filter>
+  </div>
 </div>

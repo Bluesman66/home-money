@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { componentDestroyed } from "ng2-rx-componentdestroyed";
+import { componentDestroyed } from 'ng2-rx-componentdestroyed';
 
 import { CategoriesService } from './../shared/services/categories.service';
 import { EventsService } from './../shared/services/events.service';
@@ -13,19 +13,22 @@ import { HMEvent } from './../shared/models/event.model';
   styleUrls: ['./history-page.component.scss']
 })
 export class HistoryPageComponent implements OnInit, OnDestroy {
-  ngOnDestroy(): void { }
 
-  isLoaded: boolean = false;
+  isLoaded = false;
 
   categories: Category[] = [];
   events: HMEvent[] = [];
 
   chartData = [];
 
+  isFilterVisible = false;
+
   constructor(
     private categoriesService: CategoriesService,
     private eventsService: EventsService
   ) { }
+
+  ngOnDestroy(): void { }
 
   ngOnInit() {
     this.isLoaded = false;
@@ -53,6 +56,22 @@ export class HistoryPageComponent implements OnInit, OnDestroy {
         }, 0)
       });
     });
+  }
+
+  private toggleFilterVisibility(direction: boolean) {
+    this.isFilterVisible = direction;
+  }
+
+  onOpenFilter() {
+    this.toggleFilterVisibility(true);
+  }
+
+  onFilterApply(filterData) {
+    console.log(filterData);
+  }
+
+  onFilterCancel() {
+    this.toggleFilterVisibility(false);
   }
 
 }
