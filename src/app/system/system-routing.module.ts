@@ -1,3 +1,4 @@
+import { HistoryDetailsComponent } from './history-page/history-details/history-details.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -13,7 +14,8 @@ const routes: Routes = [
             { path: 'bill', component: BillPageComponent },
             { path: 'history', component: HistoryPageComponent },
             { path: 'planning', component: PlanningPageComponent },
-            { path: 'records', component: RecordsPageComponent }
+            { path: 'records', component: RecordsPageComponent },
+            { path: 'history/:id', component: HistoryDetailsComponent }
         ]
     }
 ];
