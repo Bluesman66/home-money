@@ -9,6 +9,6 @@
 </div>
 <div *ngIf="isLoaded">
   <pai-history-chart [data]="chartData"></pai-history-chart>
-  <pai-history-events></pai-history-events>
+  <pai-history-events [categories]="categories" [events]="events"></pai-history-events>
   <pai-history-filter></pai-history-filter>
 </div>

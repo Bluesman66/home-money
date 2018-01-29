@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+
+import { Category } from './../../shared/models/category.model';
+import { HMEvent } from './../../shared/models/event.model';
 
 @Component({
   selector: 'pai-history-events',
@@ -7,9 +10,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HistoryEventsComponent implements OnInit {
 
+  @Input() categories: Category[] = [];
+  @Input() events: HMEvent[] = [];
+
   constructor() { }
 
   ngOnInit() {
+    this.events.forEach(e => {
+      e.catName = this.categories.find(c => c.id === e.category).name;
+    })
   }
 
+  getEventClass(event: HMEvent) {
+    return {
+      'label': true,
+      'label-danger': event.type === 'outcome',
+      'label-success': event.type === 'income' 
+    }
+  }
 }
