@@ -10,7 +10,7 @@
   </div>
 </div>
 <div *ngIf="!isLoaded" class="text-center">
-  Loading...
+  <pai-loader></pai-loader>
 </div>
 <div *ngIf="isLoaded">
   <pai-history-chart [data]="chartData">

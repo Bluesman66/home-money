@@ -60,7 +60,7 @@ export class LoginComponent implements OnInit, OnDestroy {
         if (user) {
           if (user.password === formData.password) {
             this.message.text = '';
-            localStorage.setItem('user', JSON.stringify(user))
+            localStorage.setItem('user', JSON.stringify(user));
             this.authService.login();
             this.router.navigate(['/system', 'bill']);
           } else {

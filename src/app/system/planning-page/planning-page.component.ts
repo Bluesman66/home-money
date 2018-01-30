@@ -14,7 +14,7 @@ import { HMEvent } from './../shared/models/event.model';
   templateUrl: './planning-page.component.html',
   styleUrls: ['./planning-page.component.scss']
 })
-export class PlanningPageComponent implements OnInit, OnDestroy {  
+export class PlanningPageComponent implements OnInit, OnDestroy {
 
   isLoaded = false;
   bill: Bill;

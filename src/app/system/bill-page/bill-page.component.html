@@ -11,7 +11,7 @@
 </div>
 <section class="section">
   <div class="row text-center" *ngIf="!isLoaded">
-    Loading...
+    <pai-loader></pai-loader>
   </div>
   <div class="row" *ngIf="isLoaded">  
     <pai-bill-card [bill]="bill" [currency]="currency"></pai-bill-card>
