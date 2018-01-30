@@ -35,6 +35,8 @@ export class LoginComponent implements OnInit, OnDestroy {
       .subscribe((params: Params) => {
         if (params['nowCanLogin']) {
           this.showMessage('Теперь вы можете зайти в систему', 'success');
+        } else if (params['accessDenied']) {
+          this.showMessage('Для работы с системой необходимо пройти авторизацию', 'warning');
         }
       });
 
