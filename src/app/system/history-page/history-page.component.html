@@ -15,7 +15,7 @@
 <div *ngIf="isLoaded">
   <pai-history-chart [data]="chartData">
   </pai-history-chart>
-  <pai-history-events [categories]="categories" [events]="events">
+  <pai-history-events [categories]="categories" [events]="filteredEvents">
   </pai-history-events>
   <div *ngIf="isFilterVisible">
     <pai-history-filter (FilterApply)="onFilterApply($event)" (FilterCancel)="onFilterCancel()" [categories]="categories">

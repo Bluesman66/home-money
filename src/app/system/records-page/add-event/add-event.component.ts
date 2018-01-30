@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import * as moment from 'moment';
-import { componentDestroyed } from "ng2-rx-componentdestroyed";
+import { componentDestroyed } from 'ng2-rx-componentdestroyed';
 
 import { Category } from './../../shared/models/category.model';
 import { HMEvent } from './../../shared/models/event.model';
@@ -16,9 +16,9 @@ import { Message } from './../../../shared/models/message.model';
   styleUrls: ['./add-event.component.scss']
 })
 export class AddEventComponent implements OnInit, OnDestroy {
-  ngOnDestroy(): void { }
 
   @Input() categories: Category[] = [];
+
   types = [
     { type: 'income', label: 'Доход' },
     { type: 'outcome', label: 'Расход' }
@@ -31,23 +31,26 @@ export class AddEventComponent implements OnInit, OnDestroy {
     private billService: BillService
   ) { }
 
+  ngOnDestroy(): void { }
+
   ngOnInit() {
     this.message = new Message('danger', '');
   }
 
-  private showMessage(text: string) { 
+  private showMessage(text: string) {
     this.message.text = text;
-    setTimeout(() => this.message.text = '', 5000); 
+    setTimeout(() => this.message.text = '', 5000);
   }
 
   onSubmit(form: NgForm) {
+
     let { type, amount, category, description } = form.value;
-    if (amount < 0) amount *= -1;
+    if (amount < 0) { amount *= -1; }
 
     const event = new HMEvent(
       type,
       amount,
-      category,
+      +category,
       moment().format('DD.MM.YYYY HH:mm:ss'),
       description);
 
@@ -59,12 +62,10 @@ export class AddEventComponent implements OnInit, OnDestroy {
           if (amount > bill.value) {
             this.showMessage(`На счету недостаточно средств. Вам не хватает ${amount - bill.value}`);
             return;
-          }
-          else {
+          } else {
             value = bill.value - amount;
           }
-        }
-        else {
+        } else {
           value = bill.value + amount;
         }
 
@@ -74,6 +75,7 @@ export class AddEventComponent implements OnInit, OnDestroy {
           .subscribe(() => {
             form.setValue({
               type: 'outcome',
+              description: ' ',
               amount: 0,
               category: 1
             });
