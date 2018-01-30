@@ -2,6 +2,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { componentDestroyed } from 'ng2-rx-componentdestroyed';
+import { Title } from '@angular/platform-browser';
 
 import { UsersService } from '../../shared/services/users.service';
 import { User } from '../../shared/models/user.model';
@@ -17,8 +18,11 @@ export class RegistrationComponent implements OnInit, OnDestroy {
 
   constructor(
     private usersService: UsersService,
-    private router: Router
-  ) { }
+    private router: Router,
+    private title: Title
+  ) {
+    title.setTitle('Регистрация');
+  }
 
   ngOnDestroy(): void { }
 
